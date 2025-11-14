@@ -70,7 +70,7 @@ end
 
 %If root path exists and contains correct attribute, exit here
 try
-    a = fn_hdf5_read_to_matlab(MFMC.fname, [MFMC.root_path, '/']);
+    a = fn_hdf5_read_to_matlab(MFMC.fname, MFMC.root_path);
     if isfield(a, 'TYPE') && strcmp(a.TYPE, MFMC.TYPE)
         return
     else

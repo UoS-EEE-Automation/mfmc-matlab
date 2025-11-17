@@ -74,10 +74,10 @@ try
     if isfield(a, 'TYPE') && strcmp(a.TYPE, MFMC.TYPE)
         return
     else
-        error('Root path exists but does not contain MFMC data');
+        error("Root path exists but does not contain MFMC data");
     end
 catch ME
-    if strcmp(ME.message, 'Root path exists but does not contain MFMC data')
+    if (ME.message == "Root path exists but does not contain MFMC data")
         rethrow(ME);
     end
 end

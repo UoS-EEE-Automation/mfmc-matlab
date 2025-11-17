@@ -19,7 +19,7 @@ datasets_to_exclude = {'MFMC_DATA', 'MFMC_DATA_IM'};
 [SEQUENCE, groups] = fn_hdf5_read_to_matlab(MFMC.fname, sequence_path, datasets_to_exclude);
 
 if ~strcmp(SEQUENCE.TYPE, 'SEQUENCE')
-    error('Data does not have TYPE = SEQUENCE');
+    error("Data does not have TYPE = SEQUENCE");
 end
 
 end

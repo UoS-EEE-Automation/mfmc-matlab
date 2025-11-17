@@ -17,7 +17,7 @@ sequence_path = [fn_hdf5_ref_or_index_or_loc_to_loc(ref_or_index_or_loc, MFMC.fn
 [SEQUENCE, groups] = fn_hdf5_read_to_matlab(MFMC.fname, sequence_path, datasets_to_include, true);
 
 if ~strcmp(SEQUENCE.TYPE, 'SEQUENCE')
-    error('Data does not have TYPE = SEQUENCE');
+    error("Data does not have TYPE = SEQUENCE");
 end
 
 end

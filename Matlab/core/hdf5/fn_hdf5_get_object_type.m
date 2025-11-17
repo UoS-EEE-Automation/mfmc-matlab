@@ -3,7 +3,7 @@ object_type = 'does not exist';
 try
     file_id = H5F.open(fname, 'H5F_ACC_RDONLY', 'H5P_DEFAULT');
 catch
-    error(['Failed to open file: ', fname]);
+    error("Failed to open file: %s", fname);
 end
 c1 = onCleanup(@()H5F.close(file_id));
 

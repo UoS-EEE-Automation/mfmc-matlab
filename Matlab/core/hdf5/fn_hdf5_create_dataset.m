@@ -48,7 +48,7 @@ end
 %create dataset
 if strcmp(type, 'hdf5_ref') %special case - must be 8 cols
     if size(data, 2) ~= 8
-        error('HDF5 reference data must have 8 columns')
+        error("HDF5 reference data must have 8 columns")
     end
     h5_dims = size(data, 1);
     h5_maxdims = h5_dims;

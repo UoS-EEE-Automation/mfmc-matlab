@@ -55,7 +55,7 @@ frame = fn_MFMC_read_frame(MFMC, ref_or_index_or_loc, frame_index);
 seq = fn_MFMC_read_sequence(MFMC, ref_or_index_or_loc);
 no_probes = size(seq.PROBE_LIST, 1);
 if no_probes > 1
-    error('Multiple probe not supported in Brain exp_data format');
+    error("Multiple probe not supported in Brain exp_data format");
 else
     probe_ref = seq.PROBE_LIST(1,:);
 end
@@ -78,14 +78,14 @@ exp_data.rx = zeros(1, no_ascans);
 for ii = 1:size(seq.TRANSMIT_LAW, 1)
      law = fn_MFMC_read_law(MFMC, seq.TRANSMIT_LAW(ii, :));
      if length(law.ELEMENT) > 1
-         error('Multiple transmit elements not supported in Brain exp_data format');
+         error("Multiple transmit elements not supported in Brain exp_data format");
      end
      exp_data.tx(ii) = law.ELEMENT(1);
 end
 for ii = 1:size(seq.RECEIVE_LAW, 1)
      law = fn_MFMC_read_law(MFMC, seq.RECEIVE_LAW(ii, :));
      if length(law.ELEMENT) > 1
-         error('Multiple receive elements not supported in Brain exp_data format');
+         error("Multiple receive elements not supported in Brain exp_data format");
      end
      exp_data.rx(ii) = law.ELEMENT;
 end

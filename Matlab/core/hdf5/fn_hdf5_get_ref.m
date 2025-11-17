@@ -13,7 +13,7 @@ end
 try
     file_id = H5F.open(fname,'H5F_ACC_RDWR','H5P_DEFAULT');
 catch
-    error(['Failed to open file: ', fname]);
+    error("Failed to open file: %s", fname);
 end
 location_id = H5G.open(file_id, groups{end});
 ref = H5R.create(location_id, name, 'H5R_OBJECT', -1);

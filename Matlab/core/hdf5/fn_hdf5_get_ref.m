@@ -11,7 +11,7 @@ end
 
 %open file
 try
-    file_id = H5F.open(fname,'H5F_ACC_RDWR','H5P_DEFAULT');
+    file_id = H5F.open(fname,'H5F_ACC_RDONLY','H5P_DEFAULT');
 catch
     error("Failed to open file: %s", fname);
 end

@@ -1,7 +1,7 @@
 function MFMC = fn_MFMC_open_file(fname, varargin)
 %SUMMARY
-%   Opens MFMC file for reading or writing. If file does not exist it is 
-%   created. If file exists but non-existent root path is specified, the 
+%   Opens MFMC file for reading or writing. If file does not exist it is
+%   created. If file exists but non-existent root path is specified, the
 %   path is created in the file.
 %INPUTS
 %   fname - full path and name of file (path is needed to avoid erratic
@@ -59,32 +59,21 @@ if ~exist(fname, 'file')
     fcpl = H5P.create('H5P_FILE_CREATE');
     fapl = H5P.create('H5P_FILE_ACCESS');
     file_id = H5F.create(MFMC.fname, 'H5F_ACC_TRUNC', fcpl, fapl);
+
+    %Create root attributes
+    fn_hdf5_create_entry(MFMC, MFMC.fname, [MFMC.root_path, 'TYPE'],    'M', 'A');
+    fn_hdf5_create_entry(MFMC, MFMC.fname, [MFMC.root_path, 'VERSION'], 'M', 'A');
+    H5F.close(file_id);
 else
-    file_id = H5F.open(fname); %will throw error if not HDF5 file
-end
-H5F.close(file_id);
-
-if open_file_only
-    return
+    %Throw error if reading non-hdf5 file
+    assert(H5F.is_hdf5(fname), "File is not HDF5 encoded."); 
 end
 
-%If root path exists and contains correct attribute, exit here
-try
+%Check for correct attributes signifying mfmc file
+if ~open_file_only
     a = fn_hdf5_read_to_matlab(MFMC.fname, MFMC.root_path);
-    if isfield(a, 'TYPE') && strcmp(a.TYPE, MFMC.TYPE)
-        return
-    else
-        error("Root path exists but does not contain MFMC data");
-    end
-catch ME
-    if (ME.message == "Root path exists but does not contain MFMC data")
-        rethrow(ME);
-    end
+    assert(isfield(a, 'TYPE') && strcmp(a.TYPE, MFMC.TYPE), "Root path exists but does not contain MFMC data");
 end
-
-%Create root attributes
-fn_hdf5_create_entry(MFMC, MFMC.fname, [MFMC.root_path, 'TYPE'],    'M', 'A');
-fn_hdf5_create_entry(MFMC, MFMC.fname, [MFMC.root_path, 'VERSION'], 'M', 'A');
 
 end
 

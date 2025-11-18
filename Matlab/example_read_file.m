@@ -2,12 +2,11 @@
 %   Example of reading from an MFMC structure in an HDF5 file. File is
 %   created first by executing 'example_create_file.m'.
 
-%First create the file then clear everything and restore path to default
+%First create the file then clear everything
 run('example_create_file'); 
 clearvars -except fname;
 close all;
 clc;
-restoredefaultpath;
 
 
 %--------------------------------------------------------------------------

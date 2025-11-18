@@ -20,6 +20,8 @@ FRAME = zeros([info.Dataspace.Size(1:2), length(frame_index)]);
 for ii = 1:length(frame_index)
     start = [1,1,frame_index(ii)];
     FRAME(:,:,ii) = h5read(MFMC.fname, [sequence_path, 'MFMC_DATA'], start, count);
+
+    % Attempt to read optional imaginary signal component. May not exist.
     try
         FRAME(:,:,ii) = FRAME(:,:,ii) + 1i * h5read(MFMC.fname, [sequence_path, 'MFMC_DATA_IM', start, count]);
     catch

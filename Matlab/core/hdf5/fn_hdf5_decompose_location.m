@@ -5,7 +5,7 @@ function [groups, name] = fn_hdf5_decompose_location(location)
 jj = findstr(location, '/');
 
 if isempty(jj) || jj(1) ~= 1
-    error('Invalid hdf5 location');
+    error("Invalid hdf5 location");
 end
     
 groups{1} = '/';

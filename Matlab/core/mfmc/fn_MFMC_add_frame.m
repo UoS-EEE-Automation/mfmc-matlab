@@ -30,11 +30,11 @@ sequence_path = [fn_hdf5_ref_or_index_or_loc_to_loc(ref_or_index_or_loc, MFMC.fn
 tmp = fn_hdf5_read_to_matlab(MFMC.fname, sequence_path); %add exclude MFMC data and anything else not needed to avoid reading it all in
 
 if ~strcmp(tmp.TYPE, 'SEQUENCE')
-    error('Invalid sequence');
+    error("Invalid sequence");
 end
 tmp = fn_MFMC_get_data_dimensions(MFMC, ref_or_index_or_loc,'PROBE_LIST');
 if (isempty(tmp))
-    error('No probe specified in SEQUENCE.PROBE_LIST')
+    error("No probe specified in SEQUENCE.PROBE_LIST")
 end
 no_probes = tmp(1);
 
@@ -48,10 +48,10 @@ if (~isempty(tmp))
     no_time_pts_in_file=tmp(1);
     no_ascans_in_file=tmp(2);
     if (no_time_pts_in_file ~= no_time_pts)
-        error(['Invalid number of time points (',num2str(no_time_pts),') in new FRAME, must match with value in MFMC file (',num2str(no_time_pts_in_file),')'])
+        error("Invalid number of time points (%d) in new FRAME, must match with value in MFMC file (%d)", no_time_pts, no_time_pts_in_file)
     end
     if (no_ascans_in_file ~= no_ascans)
-        error(['Invalid number of A-scans (',num2str(no_ascans),') in new FRAME, must match with value in MFMC file (',num2str(no_ascans_in_file),')'])
+        error("Invalid number of A-scans (%d) in new FRAME, must match with value in MFMC file (%d)", no_ascans, no_ascans_in_file)
     end
 end
 

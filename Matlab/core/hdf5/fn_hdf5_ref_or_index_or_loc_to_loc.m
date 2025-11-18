@@ -13,13 +13,13 @@ elseif ischar(ref_or_index_or_loc)
     %ref_or_index_or_name is string
     loc = ref_or_index_or_loc; 
 else
-    error('Invalid reference');
+    error("Invalid reference");
 end
 
 try 
     h5info(fname, loc);
 catch
-    error('No matching object in file');
+    error("No matching object in file");
 end
 
 end

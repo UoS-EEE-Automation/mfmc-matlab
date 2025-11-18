@@ -15,7 +15,7 @@ probe_path = [fn_hdf5_ref_or_index_or_loc_to_loc(ref_or_index_or_loc, MFMC.fname
 PROBE = fn_hdf5_read_to_matlab(MFMC.fname, probe_path);
 
 if ~strcmp(PROBE.TYPE, 'PROBE')
-    error('Data does not have TYPE = PROBE');
+    error("Data does not have TYPE = PROBE");
 end
 
 end

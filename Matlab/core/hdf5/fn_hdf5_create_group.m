@@ -7,7 +7,7 @@ function group_ref = fn_hdf5_create_group(fname, location)
 try
     file_id = H5F.open(fname,'H5F_ACC_RDWR','H5P_DEFAULT');
 catch
-    error(['Failed to open file: ', fname]);
+    error("Failed to open file: %s", fname);
 end
 
 if length(location) > 1 && location(end) == '/'

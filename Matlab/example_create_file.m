@@ -3,11 +3,10 @@
 %   MFMC data structure from Matlab. The numerical values used in the file
 %   are random numbers.
 
-%Clear everything and restore path to default
+%Clear everything
 clear;
 close all;
 clc;
-restoredefaultpath;
 
 %Name of MFMC file to create
 fname = 'example mfmc file.mfmc';
